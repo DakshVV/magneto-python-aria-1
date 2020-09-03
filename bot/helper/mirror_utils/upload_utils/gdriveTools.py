@@ -319,7 +319,7 @@ class GoogleDriveHelper:
             if meta.get("mimeType") == self.__G_DRIVE_DIR_MIME_TYPE:
                 dir_id = self.create_directory(meta.get('name'), parent_id)
                 result = self.cloneFolder(meta.get('name'), meta.get('name'), meta.get('id'), dir_id)
-                msg += f'<b>Filename : </b><code>{meta.get("name")}</code>\n<b>Size : </b>{get_readable_file_size(self.transferred_size)}'
+                msg += f'<b>○ 📂Folder Name :</b> <code>{meta.get("name")}</code>\n\n<b>○ 💾 Total Size :</b> {get_readable_file_size(self.transferred_size)}\n\n<b>⚠ DO NOT <u>SHARE</u> INDEX LINK PUBLICLY ⚠</b>\n\n<b>#Folder Cloned To Team Drive ✅</b>\n\n<b>○ 🗳 Powered By @spxtorrent</b>'
                 durl = self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id)
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
@@ -342,7 +342,7 @@ class GoogleDriveHelper:
                     buttons.buildbutton(f"{BUTTON_FIVE_NAME}", f"{BUTTON_FIVE_URL}")
             else:
                 file = self.copyFile(meta.get('id'), parent_id)
-                msg += f'<b>Filename : </b><code>{file.get("name")}</code>'
+                msg += f'<b>○ 🗃️File Name :</b> <code>{file.get("name")}</code>\n\n<b>○ 💾 Total Size :</b> {get_readable_file_size(self.transferred_size)}\n\n<b>⚠ DO NOT <u>SHARE</u> INDEX LINK PUBLICLY ⚠</b>\n\n<b>#File Cloned To Team Drive ✅</b>\n\n<b>○ 🗳 Powered By @spxtorrent</b>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 buttons = button_build.ButtonMaker()
                 if SHORTENER is not None and SHORTENER_API is not None:
@@ -481,9 +481,9 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = 'Mirror Bot Search',
-                                 author_name='Mirror Bot',
-                                 author_url='https://github.com/magneto261290/magneto-python-aria',
+                                 title = 'SPX Drive',
+                                 author_name='SPX Torrent',
+                                 author_url='https://t.me/Daksh_v',
                                  html_content=content)
         return
 
@@ -556,9 +556,9 @@ class GoogleDriveHelper:
 
             for content in self.telegraph_content :
                 self.path.append(Telegraph(access_token=telegraph_token).create_page(
-                                                        title = 'Mirror Bot Search',
-                                                        author_name='Mirror Bot',
-                                                        author_url='https://github.com/magneto261290/magneto-python-aria',
+                                                        title = 'SPX Drive',
+                                                        author_name='SPX Torrent',
+                                                        author_url='https://t.me/Daksh_v',
                                                         html_content=content
                                                         )['path'])
 
